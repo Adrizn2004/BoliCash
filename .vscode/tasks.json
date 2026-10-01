@@ -1,0 +1,474 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Test shell task",
+			"type": "shell",
+			"command": "echo hello",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Flutter SDK and browser build prerequisites",
+			"type": "shell",
+			"command": "cd /d \"c:\\app bancaria\" && where flutter && flutter --version",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Flutter SDK",
+			"type": "shell",
+			"command": "cd /d \"c:\\app bancaria\"; where.exe flutter; flutter --version",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Supabase user data",
+			"type": "shell",
+			"command": "$url = 'https://mmouorgrtaslqlowltwj.supabase.co/rest/v1/usuarios?select=nombre,email,pin,estado_activo&email=eq.belen.montes@gmail.com'; $headers = @{ apikey = 'sb_publishable_lkBq2dtAy0TMtLPILhEnaA_pO7_Rf-p'; Authorization = 'Bearer sb_publishable_lkBq2dtAy0TMtLPILhEnaA_pO7_Rf-p'; Accept = 'application/json' }; Invoke-RestMethod -Uri $url -Headers $headers -Method Get",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect Supabase REST error",
+			"type": "shell",
+			"command": "curl -sS -D - -H \"apikey: sb_publishable_lkBq2dtAy0TMtLPILhEnaA_pO7_Rf-p\" -H \"Authorization: Bearer sb_publishable_lkBq2dtAy0TMtLPILhEnaA_pO7_Rf-p\" -H \"Accept: application/json\" \"https://mmouorgrtaslqlowltwj.supabase.co/rest/v1/usuarios?select=nombre,email,pin,estado_activo&email=eq.belen.montes@gmail.com\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect Supabase REST error body",
+			"type": "shell",
+			"command": "curl.exe -sS -D - -H \"apikey: sb_publishable_lkBq2dtAy0TMtLPILhEnaA_pO7_Rf-p\" -H \"Authorization: Bearer sb_publishable_lkBq2dtAy0TMtLPILhEnaA_pO7_Rf-p\" -H \"Accept: application/json\" 'https://mmouorgrtaslqlowltwj.supabase.co/rest/v1/usuarios?select=nombre,email,pin,estado_activo&email=eq.belen.montes@gmail.com'",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Read Supabase body error",
+			"type": "shell",
+			"command": "try { Invoke-RestMethod -Uri 'https://mmouorgrtaslqlowltwj.supabase.co/rest/v1/usuarios?select=nombre,email,pin,estado_activo&email=eq.belen.montes@gmail.com' -Headers @{ apikey='sb_publishable_lkBq2dtAy0TMtLPILhEnaA_pO7_Rf-p'; Authorization='Bearer sb_publishable_lkBq2dtAy0TMtLPILhEnaA_pO7_Rf-p'; Accept='application/json' } -Method Get -ErrorAction Stop } catch { $ex = $_.Exception; Write-Host $ex.Message; $response = $ex.Response; if ($response) { $stream = $response.GetResponseStream(); if ($stream) { $reader = New-Object System.IO.StreamReader($stream); $reader.ReadToEnd() | Write-Host } } }",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect actual Supabase schema fields",
+			"type": "shell",
+			"command": "try { Invoke-RestMethod -Uri 'https://mmouorgrtaslqlowltwj.supabase.co/rest/v1/usuarios?select=*' -Headers @{ apikey='sb_publishable_lkBq2dtAy0TMtLPILhEnaA_pO7_Rf-p'; Authorization='Bearer sb_publishable_lkBq2dtAy0TMtLPILhEnaA_pO7_Rf-p'; Accept='application/json' } -Method Get -ErrorAction Stop | ConvertTo-Json -Depth 10 } catch { $ex = $_.Exception; Write-Host $ex.Message; $response = $ex.Response; if ($response) { $stream = $response.GetResponseStream(); if ($stream) { $reader = New-Object System.IO.StreamReader($stream); $reader.ReadToEnd() | Write-Host } } }",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify remote PIN login against Supabase",
+			"type": "shell",
+			"command": "$headers = @{ apikey='sb_publishable_lkBq2dtAy0TMtLPILhEnaA_pO7_Rf-p'; Authorization='Bearer sb_publishable_lkBq2dtAy0TMtLPILhEnaA_pO7_Rf-p'; Accept='application/json' }; $byName = Invoke-RestMethod -Uri 'https://mmouorgrtaslqlowltwj.supabase.co/rest/v1/usuarios?select=id,nombre,email,pin,estado&nombre=eq.belen%20montes&pin=eq.123456' -Headers $headers -Method Get; $byName | ConvertTo-Json -Depth 10; $byEmail = Invoke-RestMethod -Uri 'https://mmouorgrtaslqlowltwj.supabase.co/rest/v1/usuarios?select=id,nombre,email,pin,estado&email=eq.belen@bolicash.bo&pin=eq.123456' -Headers $headers -Method Get; $byEmail | ConvertTo-Json -Depth 10",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build APK release",
+			"type": "shell",
+			"command": "cd /d \"c:\\app bancaria\"; flutter clean; flutter pub get; flutter build apk --release",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build release APK with fixed path handling",
+			"type": "shell",
+			"command": "Set-Location 'c:\\app bancaria'; flutter pub get; flutter build apk --release",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Android SDK installation",
+			"type": "shell",
+			"command": "Get-ChildItem 'C:\\Android' -ErrorAction SilentlyContinue; Get-ChildItem 'C:\\Android\\sdk' -ErrorAction SilentlyContinue | Select-Object Name,FullName",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect cmdline-tools structure",
+			"type": "shell",
+			"command": "Get-ChildItem 'C:\\Android\\sdk\\cmdline-tools' -Recurse | Select-Object FullName | Format-Table -AutoSize",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Android platform packages",
+			"type": "shell",
+			"command": "Get-ChildItem 'C:\\Android\\sdk\\platforms' -ErrorAction SilentlyContinue | Select-Object Name; Get-ChildItem 'C:\\Android\\sdk\\build-tools' -ErrorAction SilentlyContinue | Select-Object Name",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Diagnose Android SDK failure",
+			"type": "shell",
+			"command": "$env:ANDROID_SDK_ROOT = 'C:\\Android\\sdk'; & 'C:\\Android\\sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' --list",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Flutter doctor",
+			"type": "shell",
+			"command": "flutter doctor -v",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Analyze project",
+			"type": "shell",
+			"command": "flutter analyze",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Re-run analyzer",
+			"type": "shell",
+			"command": "flutter analyze",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Final analyzer check",
+			"type": "shell",
+			"command": "flutter analyze",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Validate no analyzer warnings",
+			"type": "shell",
+			"command": "flutter analyze",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build Android APK",
+			"type": "shell",
+			"command": "flutter build apk --debug",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install required NDK",
+			"type": "shell",
+			"command": "& 'C:\\Android\\sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' 'ndk;28.2.13676358'",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "List available NDK packages",
+			"type": "shell",
+			"command": "& 'C:\\Android\\sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' --list | Select-String 'ndk|28\\.2|28.2'",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install NDK with explicit package",
+			"type": "shell",
+			"command": "& 'C:\\Android\\sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' --install \"ndk;28.2.13676358\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check installed NDK directories",
+			"type": "shell",
+			"command": "Get-ChildItem 'C:\\Android\\sdk\\ndk' -ErrorAction SilentlyContinue | Select-Object Name; Get-ChildItem 'C:\\Android\\sdk' -ErrorAction SilentlyContinue | Where-Object { $_.Name -match 'ndk' } | Select-Object Name",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install NDK with SDK root set",
+			"type": "shell",
+			"command": "$env:ANDROID_SDK_ROOT = 'C:\\Android\\sdk'; & 'C:\\Android\\sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' --install \"ndk;28.2.13676358\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install NDK via cmd shell",
+			"type": "shell",
+			"command": "cmd /c \"\"C:\\Android\\sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat\" --install \"ndk;28.2.13676358\"\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check android CLI usage",
+			"type": "shell",
+			"command": "& 'C:\\Android\\sdk\\cmdline-tools\\latest\\bin\\android.bat' --help",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Find alternate Android SDK install",
+			"type": "shell",
+			"command": "Get-ChildItem 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk' -Recurse -Filter sdkmanager.bat -ErrorAction SilentlyContinue | Select-Object FullName; Get-ChildItem 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools' -ErrorAction SilentlyContinue | Select-Object Name",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Test local SDK manager",
+			"type": "shell",
+			"command": "$env:ANDROID_SDK_ROOT = 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk'; & 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' --list | Select-String 'ndk/28\\.2|28\\.2'",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install NDK in active SDK root",
+			"type": "shell",
+			"command": "$env:ANDROID_SDK_ROOT = 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk'; & 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' --install \"ndk;28.2.13676358\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Search for any NDK on disk",
+			"type": "shell",
+			"command": "Get-ChildItem 'C:\\' -Recurse -Directory -Filter 'ndk*' -ErrorAction SilentlyContinue | Select-Object FullName -First 50",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build web bundle",
+			"type": "shell",
+			"command": "flutter build web --release",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build release APK",
+			"type": "shell",
+			"command": "flutter build apk --release",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Clean and build release APK",
+			"type": "shell",
+			"command": "flutter clean; flutter pub get; flutter build apk --release",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Release APK with correct SDK root",
+			"type": "shell",
+			"command": "flutter clean; flutter pub get; flutter build apk --release",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Configure Flutter SDK path",
+			"type": "shell",
+			"command": "flutter config --android-sdk \"C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\"; flutter doctor -v",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Android release build with correct SDK env",
+			"type": "shell",
+			"command": "$Env:ANDROID_SDK_ROOT = 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk'; $Env:ANDROID_HOME = 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk'; flutter build apk --release",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build APK after fixing SDK path",
+			"type": "shell",
+			"command": "$Env:ANDROID_SDK_ROOT = 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk'; $Env:ANDROID_HOME = 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk'; flutter build apk --release",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Persist Android SDK env",
+			"type": "shell",
+			"command": "setx ANDROID_SDK_ROOT \"C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\"; setx ANDROID_HOME \"C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\"; $env:ANDROID_SDK_ROOT = 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk'; $env:ANDROID_HOME = 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk'; Get-ChildItem Env:ANDROID_SDK_ROOT,Env:ANDROID_HOME | Format-Table -AutoSize",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Final release build with corrected environment",
+			"type": "shell",
+			"command": "flutter doctor -v; flutter build apk --release",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Set Android SDK and build release APK",
+			"type": "shell",
+			"command": "flutter config --android-sdk \"C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\"; flutter build apk --release --no-tree-shake-icons",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build split APKs for Android release",
+			"type": "shell",
+			"command": "flutter build apk --split-per-abi",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Delete stale Android config and build debug APK",
+			"type": "shell",
+			"command": "cmd /c \"del /f /q android\\local.properties && flutter build apk --debug\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Delete local.properties and run debug APK build",
+			"type": "shell",
+			"command": "cmd /c \"del /f /q android\\local.properties\"; flutter build apk --debug",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build debug APK with Gradle wrapper",
+			"type": "shell",
+			"command": "cd android; .\\gradlew assembleDebug",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Locate installed JDK for Android Gradle",
+			"type": "shell",
+			"command": "where.exe java; Get-ChildItem 'C:\\Program Files\\Java' -Name",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install JDK 17 for Android build",
+			"type": "shell",
+			"command": "winget install --id Microsoft.OpenJDK.17 --source winget -e",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Find JDK installation path",
+			"type": "shell",
+			"command": "Get-ChildItem 'C:\\Program Files\\Microsoft' -Directory | Select-Object -ExpandProperty Name",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Set Java SDK and build debug APK with Gradle wrapper",
+			"type": "shell",
+			"command": "$env:JAVA_HOME='C:\\Program Files\\Microsoft\\jdk-17.0.20.101-hotspot'; $env:Path = \"$env:JAVA_HOME\\bin;$env:Path\"; flutter config --android-sdk \"C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\"; cd android; .\\gradlew assembleDebug",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Set Java env and run Gradle wrapper debug build",
+			"type": "shell",
+			"command": "$env:JAVA_HOME = 'C:\\Program Files\\Microsoft\\jdk-17.0.20.101-hotspot'; $env:Path = $env:JAVA_HOME + '\\bin;' + $env:Path; flutter config --android-sdk 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk'; Set-Location -Path 'C:\\app bancaria\\android'; .\\gradlew.bat assembleDebug",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Re-run Gradle debug build after installing JDK and NDK",
+			"type": "shell",
+			"command": "$env:JAVA_HOME = 'C:\\Program Files\\Microsoft\\jdk-17.0.20.101-hotspot'; $env:Path = $env:JAVA_HOME + '\\bin;' + $env:Path; flutter config --android-sdk 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk'; Set-Location -Path 'C:\\app bancaria\\android'; .\\gradlew.bat assembleDebug",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check whether the debug APK was generated",
+			"type": "shell",
+			"command": "Get-ChildItem 'C:\\app bancaria\\build\\app\\outputs\\flutter-apk' -File -ErrorAction SilentlyContinue; Get-ChildItem 'C:\\app bancaria\\android\\app\\build\\outputs\\apk\\debug' -File -ErrorAction SilentlyContinue",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect installed Android SDK packages",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' --list_installed",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Flutter SDK configuration",
+			"type": "shell",
+			"command": "flutter config --list",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build debug APK after fixing SDK path",
+			"type": "shell",
+			"command": "$env:JAVA_HOME = 'C:\\Program Files\\Microsoft\\jdk-17.0.20.101-hotspot'; $env:Path = $env:JAVA_HOME + '\\bin;' + $env:Path; flutter build apk --debug",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install Android NDK in the active SDK path",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' 'ndk;28.2.13676358'",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install NDK package with explicit SDK root",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' --sdk_root='C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk' --install 'ndk;28.2.13676358'",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "List Android packages available in SDK manager",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' --list | Select-String 'ndk|platform|build-tools' -Context 0,1",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install an available NDK version for the project",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' --install 'ndk;23.1.7779620'",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check which NDK directories are already installed in the SDK",
+			"type": "shell",
+			"command": "Get-ChildItem 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\ndk' -Directory -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install exact NDK and build debug APK",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' \"ndk;28.2.13676358\"; flutter build apk --debug",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Force debug APK build after NDK fix",
+			"type": "shell",
+			"command": "Set-Location 'C:\\app bancaria'; flutter build apk --debug",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check git status and remote",
+			"type": "shell",
+			"command": "git status --short --branch; git remote -v",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Initialize repo and push to GitHub",
+			"type": "shell",
+			"command": "git init; git add .; git commit -m \"Configurar GitHub Actions para APK\"; git branch -M main; git remote add origin https://github.com/Adrizn2004/BoliCash.git; git push -u origin main",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check repo state after partial push attempt",
+			"type": "shell",
+			"command": "git status --short --branch; git remote -v",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Commit staged files and push to GitHub main branch",
+			"type": "shell",
+			"command": "git add .; git commit -m 'Configurar GitHub Actions para APK'; git branch -M main; git push -u origin main",
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}
