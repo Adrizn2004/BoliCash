@@ -490,6 +490,34 @@
 			"command": "git add .",
 			"isBackground": false,
 			"problemMatcher": []
+		},
+		{
+			"label": "Create commit for Gradle fix",
+			"type": "shell",
+			"command": "git commit -m \"Fix Gradle settings for build\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Commit the Gradle fix with a PowerShell-safe message",
+			"type": "shell",
+			"command": "git commit -m 'Fix Gradle settings for build'",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Push the Gradle fix to GitHub main branch",
+			"type": "shell",
+			"command": "git push origin main",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Commit Android compatibility fix and push to main",
+			"type": "shell",
+			"command": "git add .; git commit -m 'Fix Android SDK compatibility'; git push origin main",
+			"isBackground": false,
+			"problemMatcher": []
 		}
 	]
 }
