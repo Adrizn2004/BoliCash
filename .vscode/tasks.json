@@ -469,6 +469,27 @@
 			"command": "git add .; git commit -m 'Configurar GitHub Actions para APK'; git branch -M main; git push -u origin main",
 			"isBackground": false,
 			"problemMatcher": []
+		},
+		{
+			"label": "Commit Android Gradle fix and push to GitHub",
+			"type": "shell",
+			"command": "git add .; git commit -m \"Fix Gradle settings for build\"; git push origin main",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check pending git changes",
+			"type": "shell",
+			"command": "git status --short",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Stage all repo changes",
+			"type": "shell",
+			"command": "git add .",
+			"isBackground": false,
+			"problemMatcher": []
 		}
 	]
 }

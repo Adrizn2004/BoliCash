@@ -7,7 +7,7 @@ plugins {
 android {
     namespace = "com.example.app_bancaria"
     compileSdk = 34
-    ndkVersion = "25.1.8937393"
+    // ndkVersion = "25.1.8937393"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
