@@ -558,41 +558,49 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 28),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(6, (index) {
-                      return Container(
-                        width: 42,
-                        height: 54,
-                        margin: const EdgeInsets.symmetric(horizontal: 6),
-                        child: TextField(
-                          controller: _pinControllers[index],
-                          focusNode: _pinFocusNodes[index],
-                          textAlign: TextAlign.center,
-                          keyboardType: TextInputType.number,
-                          maxLength: 1,
-                          obscureText: true,
-                          textInputAction: TextInputAction.next,
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly,
-                            LengthLimitingTextInputFormatter(1),
-                          ],
-                          onChanged: (value) => _onPinChanged(index, value),
-                          onTapOutside: (_) => FocusScope.of(context).unfocus(),
-                          decoration: InputDecoration(
-                            counterText: '',
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(14),
-                              borderSide: const BorderSide(color: Color(0xFFE5E7EB)),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(14),
-                              borderSide: const BorderSide(color: Color(0xFFE5E7EB)),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(14),
-                              borderSide: const BorderSide(color: kCrucenoGreen, width: 2),
+                      return Expanded(
+                        child: Container(
+                          height: 54,
+                          margin: const EdgeInsets.symmetric(horizontal: 4),
+                          child: TextField(
+                            controller: _pinControllers[index],
+                            focusNode: _pinFocusNodes[index],
+                            textAlign: TextAlign.center,
+                            keyboardType: TextInputType.number,
+                            maxLength: 1,
+                            obscureText: true,
+                            textInputAction: TextInputAction.next,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                              LengthLimitingTextInputFormatter(1),
+                            ],
+                            onChanged: (value) => _onPinChanged(index, value),
+                            onTapOutside: (_) =>
+                                FocusScope.of(context).unfocus(),
+                            decoration: InputDecoration(
+                              counterText: '',
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(14),
+                                borderSide: const BorderSide(
+                                  color: Color(0xFFE5E7EB),
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(14),
+                                borderSide: const BorderSide(
+                                  color: Color(0xFFE5E7EB),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(14),
+                                borderSide: const BorderSide(
+                                  color: kCrucenoGreen,
+                                  width: 2,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -1541,14 +1549,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          'Datos personales',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w800,
-                            color: Color(0xFF172033),
+                        const Expanded(
+                          child: Text(
+                            'Datos personales',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                              color: Color(0xFF172033),
+                            ),
                           ),
                         ),
                         TextButton.icon(
@@ -2443,10 +2452,11 @@ class _ReceiveQrScreenState extends State<ReceiveQrScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Cobra con QR')),
       body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
+        child: SingleChildScrollView(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text(
@@ -2559,6 +2569,7 @@ class _ReceiveQrScreenState extends State<ReceiveQrScreen> {
                   ),
                 ),
               ],
+              ),
             ),
           ),
         ),

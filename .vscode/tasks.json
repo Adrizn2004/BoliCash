@@ -518,6 +518,153 @@
 			"command": "git add .; git commit -m 'Fix Android SDK compatibility'; git push origin main",
 			"isBackground": false,
 			"problemMatcher": []
+		},
+		{
+			"label": "Build local debug APK with Flutter",
+			"type": "shell",
+			"command": "Set-Location 'C:\\app bancaria'; flutter build apk --debug --no-tree-shake-icons",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install NDK via explicit SDK root",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' --sdk_root='C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk' --install \"ndk;28.2.13676358\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Android CLI help",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\android.bat' --help",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Android CLI exe help",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\android.exe' --help",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Android SDK install help",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\android.exe' sdk --help",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Android SDK install command help",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\android.exe' sdk install --help",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install NDK using Android CLI",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\android.exe' --sdk='C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk' sdk install 'ndk@28.2.13676358' --force",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "List Android SDK packages for NDK",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\android.exe' --sdk='C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk' sdk list | Select-String 'ndk|NDK'",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verbose NDK install diagnosis",
+			"type": "shell",
+			"command": "& 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat' --sdk_root='C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk' --verbose --install 'ndk;28.2.13676358'",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Repair Android SDK and build APK",
+			"type": "shell",
+			"command": "$sdk = 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk'; $java = 'C:\\Program Files\\Microsoft\\jdk-17.0.20.101-hotspot'; $env:ANDROID_SDK_ROOT = $sdk; $env:ANDROID_HOME = $sdk; $env:JAVA_HOME = $java; $env:Path = \"$java\\bin;$env:Path\"; Set-Location 'C:\\app bancaria'; if (!(Test-Path \"$sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat\")) { throw \"sdkmanager.bat no encontrado en $sdk\" }; 1..30 | ForEach-Object { 'y' } | & \"$sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat\" --sdk_root=\"$sdk\" --licenses; & \"$sdk\\cmdline-tools\\latest\\bin\\sdkmanager.bat\" --sdk_root=\"$sdk\" --install \"platform-tools\" \"platforms;android-34\" \"build-tools;34.0.0\" \"ndk;28.2.13676358\"; flutter config --android-sdk \"$sdk\"; flutter build apk --debug",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Repair Android SDK and build APK",
+			"type": "shell",
+			"command": "powershell -ExecutionPolicy Bypass -File \"C:\\app bancaria\\repair_android_sdk.ps1\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Repair Android SDK and build APK final",
+			"type": "shell",
+			"command": "cmd /c \"C:\\app bancaria\\repair_android_sdk.bat\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Repair Android SDK and build APK final fixed",
+			"type": "shell",
+			"command": "& \"C:\\app bancaria\\repair_android_sdk.bat\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Repair Android SDK and build APK with tools path",
+			"type": "shell",
+			"command": "& \"C:\\tools\\repair_android_sdk.bat\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Repair Android SDK and build APK with tools path",
+			"type": "shell",
+			"command": "& \"C:\\tools\\repair_android_sdk.bat\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build Android APK final verify",
+			"type": "shell",
+			"command": "& \"C:\\tools\\build_debug_apk.bat\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Flutter availability",
+			"type": "shell",
+			"command": "cmd /c \"where flutter && flutter --version\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Flutter CLI and version",
+			"type": "shell",
+			"command": "where.exe flutter; flutter --version",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Final APK build verification",
+			"type": "shell",
+			"command": "$sdk = 'C:\\Users\\Adrian Vasquez\\AppData\\Local\\Android\\Sdk'; $java = 'C:\\Program Files\\Microsoft\\jdk-17.0.20.101-hotspot'; $env:ANDROID_SDK_ROOT = $sdk; $env:ANDROID_HOME = $sdk; $env:JAVA_HOME = $java; $env:Path = (Join-Path $java 'bin') + ';' + $env:Path; Set-Location 'C:\\app bancaria'; flutter config --android-sdk $sdk; flutter build apk --debug; if (Test-Path 'C:\\app bancaria\\build\\app\\outputs\\flutter-apk\\app-debug.apk') { Write-Host 'APK READY: C:\\app bancaria\\build\\app\\outputs\\flutter-apk\\app-debug.apk' } else { Write-Host 'APK MISSING' }",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build APK and capture log",
+			"type": "shell",
+			"command": "& \"C:\\tools\\build_debug_apk_with_log.bat\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check whether Gradle APK build is still running",
+			"type": "shell",
+			"command": "Get-Process java, gradle -ErrorAction SilentlyContinue | Select-Object Name, Id, ProcessName | Format-Table -AutoSize",
+			"isBackground": false,
+			"problemMatcher": []
 		}
 	]
 }
